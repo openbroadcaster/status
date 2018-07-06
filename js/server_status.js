@@ -51,10 +51,6 @@ OBModules.ServerStatus = new function()
       if(data.smart === false) $('#server_status-smart').html('<p>Error getting S.M.A.R.T. status.</p>');
       else
       {
-        // $('#server_status-smart').text('ok');
-
-        console.log( data.smart );
-
         var $lastrun = $('<div class="fieldrow"></div>');
         $lastrun.append( $('<label>Last Updated</label>') );
         $lastrun.append( $('<span></span>').text(format_timestamp(data.smart.last_run)) );
@@ -69,6 +65,17 @@ OBModules.ServerStatus = new function()
           $drive.data('drive',drive);
           $('#server_status-smart').append($drive);
           drive_index++;
+        });
+      }
+      
+      if(data.usage === false) $('#server_status-usage').html('<p>Error getting disk usage.</p>');
+      else
+      {
+        $.each(data.usage, function(drive,usage) {
+          var $drive = $('<div class="fieldrow"></div>');
+          $drive.append( $('<label></label>').text(drive) );
+          $drive.append( $('<span></span>').text( usage.used+' of '+usage.size+' ('+usage.percent+')' ) );
+          $('#server_status-usage').html($drive);
         });
       }
     });

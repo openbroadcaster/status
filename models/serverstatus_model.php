@@ -29,4 +29,33 @@ class ServerStatusModel extends OBFModel
     if(!$smart) return false;
     return json_decode($smart);
   }
+  
+  public function get_usage()
+  {
+    include(__DIR__.'/../config.php');
+    $filesystems = array_keys($config['usage']);
+
+    exec('df -h', $output, $return_var);
+    if($return_var!==0) return false;
+    
+    $usage = [];
+    
+    foreach($output as $line)
+    {
+      $parts = preg_split('/\s+/', $line);
+      
+      if(array_search($parts[0],$filesystems)!==false)
+      {
+        $usage[$parts[0]] = [
+          'size' => $parts[1],
+          'used' => $parts[2],
+          'avail' => $parts[3],
+          'percent' => $parts[4]
+        ];
+      }
+    }
+    
+    if(empty($usage)) return false;
+    return $usage;
+  }
 }
