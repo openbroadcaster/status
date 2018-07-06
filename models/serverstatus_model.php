@@ -39,19 +39,21 @@ class ServerStatusModel extends OBFModel
     if($return_var!==0) return false;
     
     $usage = [];
-    
-    foreach($output as $line)
+    foreach($filesystems as $filesystem)
     {
-      $parts = preg_split('/\s+/', $line);
-      
-      if(array_search($parts[0],$filesystems)!==false)
+      foreach($output as $line)
       {
-        $usage[$parts[0]] = [
-          'size' => $parts[1],
-          'used' => $parts[2],
-          'avail' => $parts[3],
-          'percent' => $parts[4]
-        ];
+        $parts = preg_split('/\s+/', $line);
+
+        if($parts[0]==$filesystem)
+        {
+          $usage[$config['usage'][$parts[0]].' ('.$filesystem.')'] = [
+            'size' => $parts[1],
+            'used' => $parts[2],
+            'avail' => $parts[3],
+            'percent' => $parts[4]
+          ];
+        }
       }
     }
     
