@@ -1,7 +1,7 @@
 # server status
  Shows server uptime, load, S.M.A.R.T status, and backup status
 
-## smart status install
+## smart status configuration
 
 - install smartmontools package
 
@@ -10,3 +10,7 @@
 - specify drives for smart status in config.php ($config['smart']).
 
 - run (crontab as root) tools/smart.php once an hour to update status displayed on ob server.
+
+## disk usage configuration
+
+- specify drives for disk usage in config.php ($config['usage']).
