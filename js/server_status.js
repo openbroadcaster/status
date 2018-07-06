@@ -71,11 +71,12 @@ OBModules.ServerStatus = new function()
       if(data.usage === false) $('#server_status-usage').html('<p>Error getting disk usage.</p>');
       else
       {
+        $('#server_status-usage').html('');
         $.each(data.usage, function(drive,usage) {
           var $drive = $('<div class="fieldrow"></div>');
           $drive.append( $('<label></label>').text(drive) );
           $drive.append( $('<span></span>').text( usage.used+' of '+usage.size+' ('+usage.percent+')' ) );
-          $('#server_status-usage').html($drive);
+          $('#server_status-usage').append($drive);
         });
       }
     });
