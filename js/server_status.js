@@ -81,7 +81,7 @@ OBModules.ServerStatus = new function()
       }
       
 
-      if(data.backup === false) $('#server_status-smart').html('<p>Error getting backup status.</p>');
+      if(data.backup === false) $('#server_status-backup').html('<p>Error getting backup status.</p>');
       else
       {
         $('#server_status-backup').html('');
