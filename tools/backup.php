@@ -28,7 +28,7 @@ if(!isset($config['backup'][$argv[1]]['command']))
   exit(1);
 }
 
-$command = $config['backup'][$argv[1]]['command'];
+$command = $config['backup'][$argv[1]]['command'].' 2>&1';
 
 exec($command, $output, $return_var);
 
