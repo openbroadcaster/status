@@ -33,6 +33,8 @@ class ServerStatusModel extends OBFModel
   public function get_usage()
   {
     include(__DIR__.'/../config.php');
+    if(!isset($config['usage']) || !is_array($config['usage'])) return false;
+    
     $filesystems = array_keys($config['usage']);
 
     exec('df -h', $output, $return_var);
@@ -59,5 +61,34 @@ class ServerStatusModel extends OBFModel
     
     if(empty($usage)) return false;
     return $usage;
+  }
+  
+  public function get_backup()
+  {
+    include(__DIR__.'/../config.php');
+    if(!isset($config['backup']) || !is_array($config['backup'])) return false;
+    
+    $return = [];
+    $backups = array_keys($config['backup']);
+    
+    // get our report data
+    $reports_file = __DIR__.'/../reports/backup.json';
+    if(!file_exists($reports_file)) return false;
+    $reports = json_decode(file_get_contents($reports_file),true);
+    if(!is_array($reports)) return false;
+    
+    // get report for each backup
+    foreach($backups as $backup)
+    {
+      if(isset($reports[$backup]))
+      {
+        $return[$backup] = $reports[$backup];
+        $return[$backup]['description'] = $config['backup'][$backup]['description'];
+      }
+    }
+    
+    // return our backup status data
+    if(empty($return)) return false;
+    else return $return;
   }
 }

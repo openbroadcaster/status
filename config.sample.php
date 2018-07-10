@@ -16,17 +16,17 @@ $config['usage'] = [
   '/dev/sdb1'=>'Backup 2'
 ];
 
-// drives for backup status
+// backup commands
 $config['backup'] = [
 
   'backup1db'=>[
     'description'=>'DB to Backup 1', 
-    'command'=>'/usr/bin/mysqldump -u user -ppassword dbname > /mnt/backup1/db/obdb.sql'
+    'command'=>'/usr/bin/mysqldump --single-transaction -u user -ppassword dbname > /mnt/backup1/db/obdb.sql'
   ],
   
   'backup2db'=>[
     'description'=>'DB to Backup 2', 
-    'command'=>'usr/bin/mysqldump -u user -ppassword dbname > /mnt/backup2/db/obdb.sql'
+    'command'=>'/usr/bin/mysqldump --single-transaction -u user -ppassword dbname > /mnt/backup2/db/obdb.sql'
   ],
   
   'backup1media'=>[

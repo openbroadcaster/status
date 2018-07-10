@@ -17,6 +17,7 @@ class ServerStatus extends OBFController
     $status['load'] = $this->model->get_load();
     $status['smart'] = $this->model->get_smart();
     $status['usage'] = $this->model->get_usage();
+    $status['backup'] = $this->model->get_backup();
     
     return array(true,'Server Status',$status);
   }

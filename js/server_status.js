@@ -60,7 +60,7 @@ OBModules.ServerStatus = new function()
         $.each(data.smart.drives, function(drive,status) {
           var $drive = $('<div id="server_status-smart_'+drive_index+'" class="fieldrow"></div>');
           $drive.append( $('<label></label>').text(drive) );
-          $drive.append( $('<span></span>').append( $('<a href="javascript:OBModules.ServerStatus.viewReport('+drive_index+');"></a>').text(status.status === 0 ? 'OK ' : 'ERROR ') ));
+          $drive.append( $('<span></span>').append( $('<a href="javascript:OBModules.ServerStatus.viewSmartReport('+drive_index+');"></a>').text(status.status === 0 ? 'OK ' : 'ERROR ') ));
           $drive.data('report',status.report);
           $drive.data('drive',drive);
           $('#server_status-smart').append($drive);
@@ -79,15 +79,37 @@ OBModules.ServerStatus = new function()
           $('#server_status-usage').append($drive);
         });
       }
+      
+
+      if(data.backup === false) $('#server_status-smart').html('<p>Error getting backup status.</p>');
+      else
+      {
+        $('#server_status-backup').html('');
+        var backup_index = 0;
+        $.each(data.backup, function(drive,report) {
+          var $backup = $('<div id="server_status-backup_'+backup_index+'" class="fieldrow"></div>');
+          $backup.append( $('<label></label>').text(report.description) );
+          $backup.append( $('<span></span>').append( $('<a href="javascript:OBModules.ServerStatus.viewBackupReport('+backup_index+');"></a>').text(report.status === 0 ? 'OK ' : 'ERROR ') ).append('('+format_timestamp(report.last_run)+')') );
+          $backup.data('report',report.output ? report.output : 'No output from backup command.');
+          $backup.data('description',report.description);
+          $('#server_status-backup').append($backup);
+          backup_index++;
+        });
+      }
     });
   }
   
-  this.viewReport = function(drive_index)
+  this.viewSmartReport = function(drive_index)
   {
-    // $('#server_status-smart_0').data('smart_report');
-    OB.UI.openModalWindow('modules/server_status/smart_modal.html');
-    
-    $('#server_status-smart_report_drive').text( $('#server_status-smart_'+drive_index).data('drive') );
-    $('#server_status-smart_report').text( $('#server_status-smart_'+drive_index).data('report') );
+    OB.UI.openModalWindow('modules/server_status/report_modal.html');
+    $('#server_status-report_heading').text( $('#server_status-smart_'+drive_index).data('drive') );
+    $('#server_status-report_content').text( $('#server_status-smart_'+drive_index).data('report') );
+  }
+  
+  this.viewBackupReport = function(backup_index)
+  {
+    OB.UI.openModalWindow('modules/server_status/report_modal.html');
+    $('#server_status-report_heading').text( $('#server_status-backup_'+backup_index).data('description') );
+    $('#server_status-report_content').text( $('#server_status-backup_'+backup_index).data('report') );
   }
 }

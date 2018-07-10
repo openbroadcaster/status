@@ -1,6 +1,12 @@
 # server status
  Shows server uptime, load, S.M.A.R.T status, and backup status
 
+## initial configuration
+
+- copy config.sample.php to config.php
+
+- make sure config.php is writable only by root to avoid backup commands being overwritten with something malicious.
+
 ## smart status configuration
 
 - install smartmontools package
@@ -9,8 +15,14 @@
 
 - specify drives for smart status in config.php ($config['smart']).
 
-- run (crontab as root) tools/smart.php once an hour to update status displayed on ob server.
+- run tools/smart.php once an hour (crontab as root) to update status displayed on ob server.
 
 ## disk usage configuration
 
 - specify drives for disk usage in config.php ($config['usage']).
+
+## backup command configuration
+
+- specify backup descriptions and commands in config.php ($config['backup']).
+
+- run commands tools/backup.php COMMAND_INDEX on appropriate schequle (crontab as root).
