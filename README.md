@@ -5,8 +5,6 @@
 
 - copy config.sample.php to config.php
 
-- make sure config.php is writable only by root to avoid backup commands being overwritten with something malicious.
-
 ## smart status configuration
 
 - install smartmontools package
