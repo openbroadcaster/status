@@ -19,13 +19,12 @@ $report = [
   'drives'=>[]
 ];
 
-foreach($config['smart'] as $device=>$name)
+foreach($config['smart'] as $uuid=>$name)
 {
   $output = [];
-  exec('/usr/sbin/smartctl -a '.escapeshellarg($device), $output, $return_var);
-  $drive = $name.' ('.$device.')';
-  $report['drives'][$drive]['status'] = $return_var;
-  $report['drives'][$drive]['report'] = implode(PHP_EOL,$output);
+  exec('/usr/sbin/smartctl -a '.escapeshellarg('/dev/disk/by-uuid/'.$uuid), $output, $return_var);
+  $report['drives'][$name]['status'] = $return_var;
+  $report['drives'][$name]['report'] = implode(PHP_EOL,$output);
 }
 
 file_put_contents(__DIR__.'/../reports/smart.json', json_encode($report));
