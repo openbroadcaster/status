@@ -35,21 +35,21 @@ class ServerStatusModel extends OBFModel
     include(__DIR__.'/../config.php');
     if(!isset($config['usage']) || !is_array($config['usage'])) return false;
     
-    $filesystems = array_keys($config['usage']);
+    $mountpoints = array_keys($config['usage']);
 
     exec('df -h', $output, $return_var);
     if($return_var!==0) return false;
     
     $usage = [];
-    foreach($filesystems as $filesystem)
+    foreach($mountpoints as $mountpoint)
     {
       foreach($output as $line)
       {
         $parts = preg_split('/\s+/', $line);
 
-        if($parts[0]==$filesystem)
+        if($parts[5]==$mountpoint)
         {
-          $usage[$config['usage'][$parts[0]].' ('.$filesystem.')'] = [
+          $usage[$config['usage'][$parts[5]]] = [
             'size' => $parts[1],
             'used' => $parts[2],
             'avail' => $parts[3],

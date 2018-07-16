@@ -9,11 +9,11 @@ $config['smart'] = [
   '/dev/sdb'=>'Backup 2'
 ];
 
-// partitions for usage status
+// partitions (mount points) for usage status
 $config['usage'] = [
-  '/dev/sdc1'=>'System',
-  '/dev/sda1'=>'Backup 1',
-  '/dev/sdb1'=>'Backup 2'
+  '/'=>'System',
+  '/mnt/backup1'=>'Backup 1',
+  '/mnt/backup2'=>'Backup 2'
 ];
 
 // backup commands
