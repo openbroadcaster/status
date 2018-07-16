@@ -4,9 +4,9 @@ $config = [];
 
 // drives for S.M.A.R.T. health status
 $config['smart'] = [
-  'UUID-1'=>'System',
-  'UUID-2'=>'Backup 1',
-  'UUID-3'=>'Backup 2'
+  '/dev/disk/by-id/ID1'=>'System',
+  '/dev/disk/by-id/ID2'=>'Backup 1',
+  '/dev/disk/by-id/ID3'=>'Backup 2'
 ];
 
 // partitions (mount points) for usage status
