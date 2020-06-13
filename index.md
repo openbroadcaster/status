@@ -37,6 +37,6 @@ initial configuration
     run commands tools/backup.php COMMAND_INDEX on appropriate schequle (crontab as root).
     
 
-![ Status](img/status.png ){: .status}
+![ Server Status](img/server_stats.png){: .server status}
 
 
