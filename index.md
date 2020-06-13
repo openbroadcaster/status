@@ -35,4 +35,8 @@ initial configuration
     specify backup descriptions and commands in config.php ($config['backup']).
 
     run commands tools/backup.php COMMAND_INDEX on appropriate schequle (crontab as root).
+    
+
+![ Status](img/status.png ){: .status}
+
 
