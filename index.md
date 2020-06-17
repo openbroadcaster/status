@@ -11,6 +11,8 @@ title: index
 ## server status
 {:toc}
 
+![ Server Status](img/server_stats.png){: .server status}
+
 Shows server uptime, load, S.M.A.R.T status, and backup status
 initial configuration
 
@@ -34,7 +36,3 @@ specify drives for disk usage in config.php ($config['usage']).
 specify backup descriptions and commands in config.php ($config['backup']).
 
 run commands tools/backup.php COMMAND_INDEX on appropriate schequle (crontab as root).
-
-![ Server Status](img/server_stats.png){: .server status}
-
-
