@@ -6,7 +6,7 @@ title: index
 * TOC
 {:toc}
 
-## server status
+## Server status
 
 ![ Server Status](img/server_stats.png){: .server status}
 
