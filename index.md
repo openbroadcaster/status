@@ -6,10 +6,7 @@ title: index
 * TOC
 {:toc}
 
-<a name="dashboard"></a>
-
 ## server status
-{:toc}
 
 ![ Server Status](img/server_stats.png){: .server status}
 
@@ -18,20 +15,21 @@ initial configuration
 
 copy config.sample.php to config.php
 
-## smart status configuration
+## Smart Status Configuration
 
 install smartmontools package    
 
 (optional) set up smartd to ensure adequate monitoring and email notifications: https://www.howtoforge.com/checking-hard-disk-sanity-with-smartmontools-debian-ubuntu
+
 specify drives for smart status in config.php ($config['smart']).
 
 run tools/smart.php once an hour (crontab as root) to update status displayed on ob server.  
 
-## disk usage configuration
+## Disk Usage Configuration
 
 specify drives for disk usage in config.php ($config['usage']).
 
-## backup command configuration
+## Backup Command Configuration
 
 specify backup descriptions and commands in config.php ($config['backup']).
 
