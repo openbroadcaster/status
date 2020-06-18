@@ -11,6 +11,7 @@ title: index
 ![ Server Status](img/server_stats.png){: .server status}
 
 Shows server uptime, load, S.M.A.R.T status, and backup status
+
 initial configuration
 
 copy config.sample.php to config.php
