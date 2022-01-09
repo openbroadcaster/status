@@ -1,5 +1,5 @@
 # server status
- Shows server uptime, load, S.M.A.R.T status, and backup status
+ Uptime | Load | S.M.A.R.T | Status | Health
 
 ## initial configuration
 
