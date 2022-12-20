@@ -3,10 +3,11 @@ layout: default
 title: index
 ---
 
+# Server Status
+{:.no_toc}
+
 * TOC
 {:toc}
-
-## Server Status
 
 ![ Server Status](img/server_stats.png){: .server status}
 
