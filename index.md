@@ -4,7 +4,7 @@ title: index
 ---
 <br/>
 
-![Uploading server-status.png…]()
+![server-status](https://user-images.githubusercontent.com/4603894/210111914-483a657b-a655-4cdd-bff0-7ed585411926.png)
 
 # Server Status
 {:.no_toc}
