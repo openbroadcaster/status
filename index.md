@@ -2,6 +2,9 @@
 layout: default
 title: index
 ---
+<br/>
+
+![Uploading server-status.png…]()
 
 # Server Status
 {:.no_toc}
