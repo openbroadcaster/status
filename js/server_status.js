@@ -20,7 +20,7 @@ OBModules.ServerStatus = new function()
     {
       var data = response.data;
       
-      if(data.uptime === false) $('#server_status-uptime').html('<p>Error getting uptime.</p>');
+      if(data.uptime === false) $('#server_status-uptime').html('<p>Uptime not available.</p>');
       else
       {
         var $uptime = $('<div class="fieldrow"></div>');
@@ -29,7 +29,7 @@ OBModules.ServerStatus = new function()
         $('#server_status-uptime').html($uptime);
       }
     
-      if(data.load === false) $('#server_status-load').html('<p>Error getting load averages.</p>');
+      if(data.load === false) $('#server_status-load').html('<p>Load averages not available.</p>');
       else
       {
         var $load1 = $('<div class="fieldrow"></div>');
@@ -48,7 +48,7 @@ OBModules.ServerStatus = new function()
         $('#server_status-load').append($load3);
       }
 
-      if(data.smart === false) $('#server_status-smart').html('<p>Error getting S.M.A.R.T. status.</p>');
+      if(data.smart === false) $('#server_status-smart').html('<p>S.M.A.R.T. status not available.</p>');
       else
       {
         var $lastrun = $('<div class="fieldrow"></div>');
@@ -68,7 +68,7 @@ OBModules.ServerStatus = new function()
         });
       }
       
-      if(data.usage === false) $('#server_status-usage').html('<p>Error getting disk usage.</p>');
+      if(data.usage === false) $('#server_status-usage').html('<p>Disk usage not available.</p>');
       else
       {
         $('#server_status-usage').html('');
@@ -81,7 +81,7 @@ OBModules.ServerStatus = new function()
       }
       
 
-      if(data.backup === false) $('#server_status-backup').html('<p>Error getting backup status.</p>');
+      if(data.backup === false) $('#server_status-backup').html('<p>Backup status not available.</p>');
       else
       {
         $('#server_status-backup').html('');
